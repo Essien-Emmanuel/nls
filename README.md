@@ -50,16 +50,16 @@ After installation, you can use the `nls` command to list files and folders in t
 
 
 ## Using nls with Arguments
-```sh
+
 You can use nls with arguments to list files and directories in different locations:
-```
+
 To list files and folders in the parent directory:
 
 sh
 Copy code
-nls ..
+```sh nls .. ```
 To list files and folders in the home directory:
 
 sh
 Copy code
-nls ~/
+```sh nls ~/ ```
