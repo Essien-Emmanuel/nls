@@ -9,8 +9,17 @@ const fs = require('fs');
 // Method #3
 const { lstat } = fs.promises;
 
-fs.readdir(process.cwd(), (error, filenames) => {
+fs.readdir(process.cwd(), async (error, filenames) => {
     if (error) console.log('error:: ', error);
+
+    for (const filename of filenames) {
+        try {
+            const stat = await lstat(filename);
+            console.log(filename, stat.isFile())
+        } catch (err) {
+            console.log(err)
+        }
+    }
 });
 
 // Method #1
