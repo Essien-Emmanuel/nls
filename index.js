@@ -2,24 +2,23 @@
 
 const fs = require('fs');
 
+// Method #2
+// const util = require('util');
+// const lstat = util.promisify(fs.lstat);
+
+// Method #3
+const { lstat } = fs.promises;
+
 fs.readdir(process.cwd(), (error, filenames) => {
     if (error) console.log('error:: ', error);
-    
-    const allStats = Array(filenames.length).fill(null);
-
-    for (const filename of filenames) {
-        const index = filenames.indexOf(filename);
-
-        fs.lstat(filename, (err, stats) => {
-            if (err) console.log(err)
-            allStats[index] = stats;
-
-            const ready = allStats.every((stats) => stats);
-            if (ready) {
-                allStats.forEach((stats, index) => {
-                    console.log(filenames[index], stats.isFile())
-                })
-            }
-        })
-    }
 });
+
+// Method #1
+// const lstat = (filename) => {
+//     return new Promise((resolve, reject) => {
+//         fs.lstat(filename, (err, stat) => {
+//             if (err) reject(err);
+//             resolve(stat);
+//         });
+//     });
+// }
