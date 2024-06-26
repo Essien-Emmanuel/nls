@@ -48,12 +48,11 @@ Follow the steps below to install and set up the `nls` command-line tool.
 
 After installation, you can use the `nls` command to list files and folders in the current directory.
 
+
+## Using nls with Arguments
 ```sh
-nls
-
-Using nls with Arguments
 You can use nls with arguments to list files and directories in different locations:
-
+```
 To list files and folders in the parent directory:
 
 sh
