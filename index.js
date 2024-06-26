@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const util = require('util');
+const colors = require('colors/safe');
 
 // Method #2
-// const util = require('util');
 // const lstat = util.promisify(fs.lstat);
 
 // Method #3
@@ -17,7 +18,12 @@ fs.readdir(process.cwd(), async (error, filenames) => {
         const allStats = await Promise.all(statPromises);
         for (const stats of allStats) {
             const index = allStats.indexOf(stats)
-            console.log(filenames[index], stats.isFile())
+
+            if (!stats.isFile()) {
+                console.log(colors.bold(filenames[index]))
+            } else {
+                console.log(filenames[index])
+            }
         }
     } catch (err) {
         console.log(err)
