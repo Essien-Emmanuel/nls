@@ -1,0 +1,5 @@
+in your terminal run the command 
+> chmod +x index.js // to change index.js file permission
+
+then
+> npm link // to make our project globally available in our machine
